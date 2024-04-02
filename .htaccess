@@ -1,0 +1,36 @@
+RewriteEngine on
+#Disable Directory Listing
+Options -Indexes 
+RewriteCond %{THE_REQUEST} /db_connection\.php [NC]
+RewriteRule ^ - [R=403,L]
+
+RewriteCond %{THE_REQUEST} /login\.php [NC]
+RewriteRule ^ - [R=403,L]
+
+
+RewriteCond %{THE_REQUEST} /register\.php [NC]
+RewriteRule ^ - [R=403,L]
+
+
+RewriteCond %{THE_REQUEST} /header\.php [NC]
+RewriteRule ^ - [R=403,L]
+
+RewriteCond %{THE_REQUEST} /footer\.php [NC]
+RewriteRule ^ - [R=403,L]
+
+
+# RewriteEngine on: This directive turns on the rewriting engine for the current context. It enables the use of mod_rewrite rules.
+
+# RewriteCond %{THE_REQUEST} /db_connection\.php [NC]: This is a condition that checks the value of the THE_REQUEST variable, which contains the full HTTP request line sent by the browser to the server. The condition 
+# checks if the requested URI contains "/db_connection.php" (case-insensitive, due to the [NC] flag).
+
+# RewriteRule ^ - [R=403,L]: This is the rewrite rule that is applied if the condition from the previous line is true.
+
+# ^: This symbol represents the beginning of the requested URI.
+# -: The substitution part is a hyphen, which means no substitution. 
+# In other words, if the condition is met, there is no change to the requested URI.
+
+# [R=403,L]: This indicates that the server 
+# should respond with a 403 Forbidden HTTP status 
+# code ([R=403]), and the [L] flag indicates that 
+# this is the last rule to be processed, meaning no further rules will be evaluated.
